@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.lmh.week3.dao.HomeMapper">
+  		<select id="selects" resultType="Home">
+  			select * from home
+  			<where>
+  				<if test="name!=null and name!=''">
+  					name like "%#{name}%"
+  				</if>
+  				<if test="money1!=null and money1!='' and money2!=null and money2!=''">
+  					money between #{money1} and #{money2}
+  				</if>
+  			</where>
+  		</select>
+  		<insert id="add">
+  			insert into home values(null,#{ydtime},#{name},#{type_id},#{pone},#{money})
+  		</insert>
+  </mapper>
